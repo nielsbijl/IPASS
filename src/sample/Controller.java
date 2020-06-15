@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,10 +39,15 @@ public class Controller implements Initializable {
         loadPage("fxml/bodyProperties");
     }
     public void goPage2(MouseEvent mouseEvent) {
-        loadPage("fxml/page2");
+        loadPage("fxml/simulation");
     }
     public void goPage3(MouseEvent mouseEvent) {
         loadPage("fxml/page3");
+    }
+
+    public void exit(MouseEvent mouseEvent) {
+        Platform.exit();
+        System.exit(0);
     }
 
     private void loadPage(String page){

@@ -1,0 +1,12 @@
+.backgroud{
+    -fx-background-color:  #636363;
+    -fx-background-radius: 0 30 0 0;
+}
+.gridHeader{
+    -fx-text-fill: white;
+    -fx-background-color: #3f3f3f;
+}
+.gridItem{
+    -fx-text-fill: white;
+    -fx-background-color: #4f4f4f;
+}

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="774.0" styleClass="backgroud" stylesheets="@../../css/stylesheetPages.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="774.0" styleClass="backgroud" stylesheets="@../../css/stylesheetPages.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSimulation">
    <top>
       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation" BorderPane.alignment="CENTER_LEFT">
          <font>
@@ -20,4 +21,46 @@
          </BorderPane.margin>
       </Text>
    </top>
+   <bottom>
+      <Button mnemonicParsing="false" style="-fx-background-color: #4f4f4f;" stylesheets="@../../css/stylesheetPages.css" text="Start" textFill="WHITE" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="40.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Button>
+   </bottom>
+   <center>
+      <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Ellipse fill="DODGERBLUE" radiusX="11.0" radiusY="43.0" rotate="-30.0" stroke="BLACK" strokeType="INSIDE">
+               <StackPane.margin>
+                  <Insets bottom="90.0" left="80.0" />
+               </StackPane.margin>
+            </Ellipse>
+            <Ellipse fill="DODGERBLUE" radiusX="16.0" radiusY="67.0" rotate="-20.0" stroke="BLACK" strokeType="INSIDE">
+               <StackPane.margin>
+                  <Insets left="60.0" top="200.0" />
+               </StackPane.margin>
+            </Ellipse>
+            <Ellipse fill="DODGERBLUE" radiusX="16.0" radiusY="67.0" rotate="20.0" stroke="BLACK" strokeType="INSIDE">
+               <StackPane.margin>
+                  <Insets right="60.0" top="200.0" />
+               </StackPane.margin>
+            </Ellipse>
+            <Ellipse fill="DODGERBLUE" radiusX="11.0" radiusY="43.0" rotate="30.0" stroke="BLACK" strokeType="INSIDE">
+               <StackPane.margin>
+                  <Insets bottom="90.0" right="80.0" />
+               </StackPane.margin>
+            </Ellipse>
+            <Circle fill="DODGERBLUE" radius="43.0" stroke="BLACK" strokeType="INSIDE">
+               <StackPane.margin>
+                  <Insets bottom="250.0" />
+               </StackPane.margin>
+            </Circle>
+            <Ellipse fill="DODGERBLUE" radiusX="38.0" radiusY="88.0" stroke="BLACK" strokeType="INSIDE" />
+         </children>
+      </StackPane>
+   </center>
 </BorderPane>

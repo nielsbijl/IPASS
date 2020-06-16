@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="backgroud" stylesheets="@../../../css/stylesheetPages.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Charts" BorderPane.alignment="CENTER_LEFT">
+         <font>
+            <Font name="System Bold" size="21.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="10.0" />
+         </BorderPane.margin>
+      </Text>
+   </top>
+   <center>
+      <GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints />
+          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="149.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <BorderPane.margin>
+            <Insets bottom="10.0" left="60.0" right="60.0" top="10.0" />
+         </BorderPane.margin>
+         <children>
+            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" styleClass="gridItem" stylesheets="@../../../css/stylesheetPages.css" GridPane.rowIndex="1">
+               <top>
+                  <HBox alignment="CENTER" prefHeight="24.0" prefWidth="480.0" styleClass="gridHeader" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Calories">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </top>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+               <center>
+                  <LineChart BorderPane.alignment="CENTER">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+                    </yAxis>
+                  </LineChart>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" styleClass="gridItem" GridPane.rowIndex="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+               <top>
+                  <HBox alignment="CENTER" prefHeight="22.0" prefWidth="480.0" styleClass="gridHeader" BorderPane.alignment="CENTER">
+                     <children>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Fat">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </top>
+               <center>
+                  <LineChart BorderPane.alignment="CENTER">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+                    </yAxis>
+                  </LineChart>
+               </center>
+            </BorderPane>
+         </children>
+      </GridPane>
+   </center>
+</BorderPane>

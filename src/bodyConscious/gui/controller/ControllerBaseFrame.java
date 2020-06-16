@@ -1,14 +1,11 @@
-package sample;
+package bodyConscious.gui.controller;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +16,7 @@ import javafx.scene.layout.BorderPane;
 
 
 
-public class Controller implements Initializable {
+public class ControllerBaseFrame implements Initializable {
 
     @FXML
     private BorderPane bp;
@@ -36,13 +33,13 @@ public class Controller implements Initializable {
         bp.setCenter(ap);
     }
     public void goPage1(MouseEvent mouseEvent) {
-        loadPage("fxml/bodyProperties");
+        loadPage("../fxml/bodyProperties");
     }
     public void goPage2(MouseEvent mouseEvent) {
-        loadPage("fxml/simulation");
+        loadPage("../fxml/simulation");
     }
     public void goPage3(MouseEvent mouseEvent) {
-        loadPage("fxml/page3");
+        loadPage("../fxml/charts");
     }
 
     public void exit(MouseEvent mouseEvent) {

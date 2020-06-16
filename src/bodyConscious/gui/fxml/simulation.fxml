@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="774.0" styleClass="backgroud" stylesheets="@../../css/stylesheetPages.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSimulation">
+<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="774.0" styleClass="backgroud" stylesheets="@../../../css/stylesheetPages.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bodyConscious.gui.controller.ControllerSimulation">
    <top>
       <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation" BorderPane.alignment="CENTER_LEFT">
          <font>
@@ -22,7 +22,7 @@
       </Text>
    </top>
    <bottom>
-      <Button mnemonicParsing="false" style="-fx-background-color: #4f4f4f;" stylesheets="@../../css/stylesheetPages.css" text="Start" textFill="WHITE" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" style="-fx-background-color: #4f4f4f;" stylesheets="@../../../css/stylesheetPages.css" text="Start" textFill="WHITE" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="40.0" />
          </BorderPane.margin>

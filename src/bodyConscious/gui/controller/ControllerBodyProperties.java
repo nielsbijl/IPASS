@@ -1,9 +1,11 @@
-package sample;
+package bodyConscious.gui.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 public class ControllerBodyProperties {
+
     @FXML
     private TextField bodyfatInput;
 
@@ -11,7 +13,7 @@ public class ControllerBodyProperties {
     private TextField weightInput;
 
     @FXML
-    private TextField genderInput;
+    private ToggleGroup Gender;
 
     @FXML
     private TextField heightInput;
@@ -21,4 +23,5 @@ public class ControllerBodyProperties {
 
     @FXML
     private TextField nameInput;
+
 }

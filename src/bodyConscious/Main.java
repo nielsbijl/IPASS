@@ -1,4 +1,4 @@
-package sample;
+package bodyConscious;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("fxml/base.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("gui/fxml/base.fxml"));
         primaryStage.setTitle("Body Conscious");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

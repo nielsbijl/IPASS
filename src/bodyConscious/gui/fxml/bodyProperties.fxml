@@ -91,7 +91,7 @@
                <center>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Male" textFill="WHITE">
+                        <RadioButton fx:id="radioButtonMale" mnemonicParsing="false" text="Male" textFill="WHITE">
                            <toggleGroup>
                               <ToggleGroup fx:id="Gender" />
                            </toggleGroup>
@@ -102,7 +102,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Female" textFill="WHITE" toggleGroup="$Gender">
+                        <RadioButton fx:id="radioButtonFemale" mnemonicParsing="false" text="Female" textFill="WHITE" toggleGroup="$Gender">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -249,7 +249,7 @@
       </GridPane>
    </center>
    <bottom>
-      <Button mnemonicParsing="false" text="Save" BorderPane.alignment="CENTER">
+      <Button mnemonicParsing="false" onMouseClicked="#saveBodyProperties" stylesheets="@../../../css/stylesheetPages.css" text="Save" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets bottom="30.0" top="10.0" />
          </BorderPane.margin>

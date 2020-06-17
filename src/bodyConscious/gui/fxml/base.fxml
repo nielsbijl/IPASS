@@ -21,15 +21,15 @@
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin></Button>
-            <Button fx:id="bodyProperties" mnemonicParsing="false" onMouseClicked="#goPage1" prefHeight="76.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Body properties" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button fx:id="bodyProperties" mnemonicParsing="false" onMouseClicked="#goToBodyProperties" prefHeight="76.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Body properties" textFill="WHITE" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin></Button>
-            <Button fx:id="simulation" mnemonicParsing="false" onMouseClicked="#goPage2" prefHeight="80.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Simulation" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button fx:id="simulation" mnemonicParsing="false" onMouseClicked="#goToSimulation" prefHeight="80.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Simulation" textFill="WHITE" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin></Button>
-            <Button fx:id="charts" mnemonicParsing="false" onMouseClicked="#goPage3" prefHeight="83.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Charts" textFill="WHITE" VBox.vgrow="ALWAYS">
+            <Button fx:id="charts" mnemonicParsing="false" onMouseClicked="#goToCharts" prefHeight="83.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Charts" textFill="WHITE" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets left="30.0" />
                </VBox.margin></Button>

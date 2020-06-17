@@ -5,14 +5,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
 
 
@@ -32,13 +31,13 @@ public class ControllerBaseFrame implements Initializable {
     public void goHome(MouseEvent mouseEvent) {
         bp.setCenter(ap);
     }
-    public void goPage1(MouseEvent mouseEvent) {
+    public void goToBodyProperties(MouseEvent mouseEvent) {
         loadPage("../fxml/bodyProperties");
     }
-    public void goPage2(MouseEvent mouseEvent) {
+    public void goToSimulation(MouseEvent mouseEvent) {
         loadPage("../fxml/simulation");
     }
-    public void goPage3(MouseEvent mouseEvent) {
+    public void goToCharts(MouseEvent mouseEvent) {
         loadPage("../fxml/charts");
     }
 

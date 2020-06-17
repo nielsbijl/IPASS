@@ -28,9 +28,9 @@ public class ControllerCharts implements Initializable {
         for (int i = 0; i < calories.size(); i++) {
             series.getData().add(new XYChart.Data<>("week " + i, calories.get(i)));
         }
+        series.setName("Calories you need to eat");
 
         calorieChart.getData().add(series);
-
     }
 
     @Override

@@ -39,7 +39,7 @@
    <center>
       <AnchorPane fx:id="ap" prefHeight="719.0" prefWidth="1086.0" style="-fx-background-color: #636363; -fx-background-radius: 0 30 0 0;" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="1043.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="25.0" style="-fx-background-color: #4f4f4f;" text="X" textFill="WHITE" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+            <Button fx:id="homePageSmallCloseButton" layoutX="1043.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="25.0" style="-fx-background-color: #4f4f4f;" text="X" textFill="WHITE" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
                <font>
                   <Font name="System Bold" size="11.0" />
                </font>
@@ -70,7 +70,7 @@
             </Text>
             <AnchorPane HBox.hgrow="ALWAYS">
                <children>
-                  <Button alignment="CENTER" contentDisplay="RIGHT" layoutX="765.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="36.0" prefWidth="56.0" style="-fx-background-color: #4f4f4f;" text="EXIT" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+                  <Button fx:id="exitButtonBaseFrame" alignment="CENTER" contentDisplay="RIGHT" layoutX="765.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="36.0" prefWidth="56.0" style="-fx-background-color: #4f4f4f;" text="EXIT" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font name="System Bold" size="11.0" />
                      </font>

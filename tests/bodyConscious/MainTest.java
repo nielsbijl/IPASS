@@ -1,3 +1,8 @@
+//
+// Java TestFX doesn't work with Java 11
+// Test failed!
+//
+
 package bodyConscious;
 
 import javafx.fxml.FXMLLoader;

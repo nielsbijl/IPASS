@@ -22,7 +22,6 @@ public class ControllerBodyProperties implements Initializable {
     public RadioButton radioButtonGainBodyfat;
     @FXML
     public RadioButton radioButtonLoseBodyfat;
-
     @FXML
     private RadioButton radioButtonMale;
     @FXML
@@ -87,8 +86,8 @@ public class ControllerBodyProperties implements Initializable {
         String bodyfat = (String)profile.get("Bodyfat");
         String mass = (String)profile.get("Mass");
         String goal = (String)profile.get("Goal");
-        Boolean goalLoseBodyfat = (Boolean) profile.get("GoalLoseBodyFat");
-        Boolean goalGainBodyfat = (Boolean) profile.get("GoalGainBodyFat");
+        Boolean goalLoseBodyfat = (Boolean) profile.get("GoalLoseBodyfat");
+        Boolean goalGainBodyfat = (Boolean) profile.get("GoalGainBodyfat");
 
 
         bodyData.add(name);
@@ -106,8 +105,6 @@ public class ControllerBodyProperties implements Initializable {
         return bodyData;
     }
     private void setInputFields(String name, String age, String pal, String height, String mass, String bodyfatpercentage, Boolean male, Boolean female, String goal, Boolean goalLoseBodyfat, Boolean goalGainBodyfat){
-//        System.out.println(goalGainBodyfat);
-//        System.out.println(goalLoseBodyfat);
         this.nameInput.setText(name);
         this.ageInput.setText(age);
         this.palInput.setText(pal);
@@ -122,14 +119,12 @@ public class ControllerBodyProperties implements Initializable {
         else if (female){
             this.Gender.selectToggle(radioButtonFemale);
         }
-//        if (goalLoseBodyfat){
-//            System.out.println("lose");
-//            this.Goal.selectToggle(radioButtonLoseBodyfat);
-//        }
-//        else if (goalGainBodyfat){
-//            System.out.println("gain");
-//            this.Goal.selectToggle(radioButtonGainBodyfat);
-//        }
+        if (goalLoseBodyfat){
+            this.Goal.selectToggle(radioButtonLoseBodyfat);
+        }
+        else if (goalGainBodyfat){
+            this.Goal.selectToggle(radioButtonGainBodyfat);
+        }
     }
 
 

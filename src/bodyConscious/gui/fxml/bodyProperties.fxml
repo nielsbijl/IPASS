@@ -175,7 +175,7 @@
                   <TextField fx:id="weightInput" promptText="Weight....." BorderPane.alignment="CENTER" />
                </center>
             </BorderPane>
-            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="236.0" prefWidth="298.0" styleClass="gridItem" stylesheets="@../../../css/stylesheetPages.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="236.0" prefWidth="298.0" styleClass="gridItem" stylesheets="@../../../css/stylesheetPages.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <top>
                   <HBox alignment="CENTER" prefHeight="29.0" prefWidth="270.0" styleClass="gridHeader" BorderPane.alignment="CENTER">
                      <children>
@@ -199,47 +199,16 @@
                   </HBox>
                </top>
                <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                  <Insets bottom="5.0" left="10.0" right="20.0" top="5.0" />
                </GridPane.margin>
                <center>
                   <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
                      <children>
                         <TextField fx:id="bodyfatInput" promptText="Bodyfat percentage....." />
                      </children>
-                  </VBox>
-               </center>
-            </BorderPane>
-            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0" styleClass="gridItem" stylesheets="@../../../css/stylesheetPages.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <top>
-                  <HBox alignment="CENTER" prefHeight="29.0" prefWidth="270.0" styleClass="gridHeader" BorderPane.alignment="CENTER">
-                     <children>
-                        <ImageView>
-                           <image>
-                              <Image url="@../../../image/exercise.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gridHeader" text="Physical activity level" wrappingWidth="152.77734375">
-                           <font>
-                              <Font name="System Bold" size="15.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets top="2.0" />
-                           </HBox.margin>
-                        </Text>
-                     </children>
-                  </HBox>
-               </top>
-               <GridPane.margin>
-                  <Insets bottom="5.0" left="10.0" right="20.0" top="5.0" />
-               </GridPane.margin>
-               <center>
-                  <VBox prefHeight="116.0" prefWidth="297.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <TextField fx:id="palInput" promptText="Physical activity level...." />
-                     </children>
+                     <BorderPane.margin>
+                        <Insets />
+                     </BorderPane.margin>
                   </VBox>
                </center>
             </BorderPane>
@@ -354,6 +323,82 @@
                <GridPane.margin>
                   <Insets bottom="5.0" left="20.0" right="10.0" top="5.0" />
                </GridPane.margin>
+            </BorderPane>
+            <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="151.0" prefWidth="263.0" styleClass="gridItem" stylesheets="@../../../css/stylesheetPages.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <top>
+                  <HBox alignment="CENTER" prefHeight="29.0" prefWidth="270.0" styleClass="gridHeader" BorderPane.alignment="CENTER">
+                     <children>
+                        <ImageView>
+                           <image>
+                              <Image url="@../../../image/exercise.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="gridHeader" text="Physical activity level" wrappingWidth="152.77734375">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets top="2.0" />
+                           </HBox.margin>
+                        </Text>
+                     </children>
+                  </HBox>
+               </top>
+               <GridPane.margin>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </GridPane.margin>
+               <center>
+                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <TextField fx:id="palInput" prefHeight="9.0" prefWidth="261.0" promptText="Physical activity level...." />
+                        <Label contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="14.0" prefWidth="261.0" text="1,2 = you are sedentary and do little or no exercise" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="11.5" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="2.0" />
+                              <Insets left="5.0"/>
+                           </VBox.margin>
+                        </Label>
+                        <Label contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="13.0" prefWidth="261.0" text="1,375 = you exercise lightly or do sport 1-3  days/week" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="11.5" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0"/>
+                           </VBox.margin>
+                        </Label>
+                        <Label contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="15.0" prefWidth="261.0" text="${'1,55 = you are moderately active and do exercise or \n sport 3-5 days/week'}" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="11.5" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0"/>
+                           </VBox.margin>
+                        </Label>
+                        <Label contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="57.0" prefWidth="261.0" text="${'1,725 = you are very active with hard exercise \n or sport 6-7 days a week'}" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="11.5" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="5.0"/>
+                           </VBox.margin>
+                        </Label>
+                        <Label contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="261.0" text="${'1,9 = you are extremely active with very hard exercise\n or sport and a physical job or training twice a day'}" textFill="WHITE" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="11.5" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                              <Insets left="5.0"/>
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </center>
             </BorderPane>
          </children>
          <BorderPane.margin>

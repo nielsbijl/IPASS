@@ -46,4 +46,10 @@ public class Person {
     public void setGoal(Goal goal) {
         this.goal = goal;
     }
+    public double getPhysicalActivityLevel() {
+        return physicalActivityLevel;
+    }
+    public void setPhysicalActivityLevel(double physicalActivityLevel) {
+        this.physicalActivityLevel = physicalActivityLevel;
+    }
 }

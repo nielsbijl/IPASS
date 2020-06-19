@@ -38,7 +38,7 @@ public class BodyConscious {
         System.out.print("What's your age: ");
         int age = input.nextInt();
 
-        Body body = new Body(name, mass, height, age, gender);
+        Body body = new Body(mass, height, age, gender);
         this.body = body;
     }
     public void setPhysicalActivityLevelByInput(){

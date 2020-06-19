@@ -3,7 +3,6 @@ package bodyConscious.algorithm;
 import bodyConscious.algorithm.BMR.BMR;
 
 public class Body {
-    private String name;
     private BMR caloriesBurnedAtCompleteRest;
     private double mass;
     private double height;
@@ -12,15 +11,13 @@ public class Body {
     private int bodyFatPercentage;
 
     //constructor
-    public Body(String name, double massKG, double heightCM, int ageYEARS, String gender){
-        this.name = name;
+    public Body(double massKG, double heightCM, int ageYEARS, String gender){
         this.mass = massKG;
         this.height = heightCM;
         this.age = ageYEARS;
         this.gender = gender;
     }
-    public Body(String name, double massKG, double heightCM, int ageYEARS, String gender, int bodyFatPercentage){
-        this.name = name;
+    public Body(double massKG, double heightCM, int ageYEARS, String gender, int bodyFatPercentage){
         this.mass = massKG;
         this.height = heightCM;
         this.age = ageYEARS;
@@ -29,9 +26,6 @@ public class Body {
     }
 
     //setters
-    public void setName(String name){
-        this.name = name;
-    }
     public void setCaloriesBurnedAtCompleteRest(BMR equation){ this.caloriesBurnedAtCompleteRest = equation; }
     public void setMass(double massKG){
         this.mass = massKG;
@@ -47,9 +41,6 @@ public class Body {
     }
 
     //getters
-    public String getName(){
-        return this.name;
-    }
     public double getCaloriesBurnedAtCompleteRest(){
         return this.caloriesBurnedAtCompleteRest.BMREquation(this);
     }

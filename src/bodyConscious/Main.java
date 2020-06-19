@@ -68,7 +68,7 @@ public class Main extends Application {
 //        BodyConscious test = new BodyConscious();
 //        System.out.println(BodyConscious.calculateCaloriesPerDay(-500, 100, niels, 1.4));
 
-        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
+        Body niels = new Body(83, 185, 18, "male", 17);
         niels.setCaloriesBurnedAtCompleteRest(new HarrisBenedict());
         System.out.println(niels.getCaloriesBurnedAtCompleteRest());
     }

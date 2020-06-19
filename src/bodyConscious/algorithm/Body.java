@@ -1,8 +1,10 @@
 package bodyConscious.algorithm;
 
+import bodyConscious.algorithm.BMR.BMR;
+
 public class Body {
     private String name;
-    private double productionOfHeatAtCompleteRest;
+    private BMR caloriesBurnedAtCompleteRest;
     private double mass;
     private double height;
     private int age;
@@ -27,22 +29,20 @@ public class Body {
     }
 
     //setters
-    void setName(String name){
+    public void setName(String name){
         this.name = name;
     }
-    void setProductionOfHeatAtCompleteRest(double productionOfHeatAtCompleteRest){
-        this.productionOfHeatAtCompleteRest = productionOfHeatAtCompleteRest;
-    }
-    void setMass(double massKG){
+    public void setCaloriesBurnedAtCompleteRest(BMR equation){ this.caloriesBurnedAtCompleteRest = equation; }
+    public void setMass(double massKG){
         this.mass = massKG;
     }
-    void setHeight(double heightCM){
+    public void setHeight(double heightCM){
         this.height = heightCM;
     }
-    void setAge(int ageYEARS){
+    public void setAge(int ageYEARS){
         this.age = ageYEARS;
     }
-    void setBodyFatPercentage(int bodyFatPercentage){
+    public void setBodyFatPercentage(int bodyFatPercentage){
         this.bodyFatPercentage = bodyFatPercentage;
     }
 
@@ -50,9 +50,10 @@ public class Body {
     public String getName(){
         return this.name;
     }
-    public double getProductionOfHeatAtCompleteRest(){
-        return this.productionOfHeatAtCompleteRest;
+    public double getCaloriesBurnedAtCompleteRest(){
+        return this.caloriesBurnedAtCompleteRest.BMREquation(this);
     }
+    public BMR getCaloriesBurnedAtCompleteRestEquation(){return this.caloriesBurnedAtCompleteRest;}
     public double getMass(){
         return this.mass;
     }
@@ -68,20 +69,5 @@ public class Body {
     public int getBodyFatPercentage(){
         return this.bodyFatPercentage;
     }
-
-    //calculators
-    void calculateBMRharrisBenedict(){
-        this.productionOfHeatAtCompleteRest = BMR.harrisBenedict(this);
-    }
-    void calculateBMRharrisBenedictRevised(){
-        this.productionOfHeatAtCompleteRest = BMR.harrisBenedictRevised(this);
-    }
-    void calculateBMRmifflinStJeor(){
-        this.productionOfHeatAtCompleteRest = BMR.mifflinStJeor(this);
-    }
-    void calculateBMRkatchMcArdle(){
-        this.productionOfHeatAtCompleteRest = BMR.katchMcArdle(this);
-    }
-
 
 }

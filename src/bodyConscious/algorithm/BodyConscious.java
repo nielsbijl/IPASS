@@ -1,4 +1,8 @@
+//--------------------------//
+//Text-base user application//
+//--------------------------//
 package bodyConscious.algorithm;
+
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -52,8 +56,8 @@ public class BodyConscious {
 
     public static double calculateBMR(Body body){
         //Basal Metabolic Rate
-        body.calculateBMRmifflinStJeor();
-        return body.getProductionOfHeatAtCompleteRest();
+        body.getCaloriesBurnedAtCompleteRest();
+        return body.getCaloriesBurnedAtCompleteRest();
     }
     public static int calculateTDEE(double BRM, double physicalActivityLevel){
         //Total Daily Energy Expenditure

@@ -1,7 +1,7 @@
 package bodyConscious;
 
+import bodyConscious.algorithm.BMR.HarrisBenedict;
 import bodyConscious.algorithm.Body;
-import bodyConscious.algorithm.BodyConscious;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +25,6 @@ public class Main extends Application {
 //                            "--------------MALE BODY------------\n" +
 //                            "-----------------------------------\n");
 //
-        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
 //
 //        niels.calculateBMRharrisBenedict();
 //        System.out.println("harrisBenedict = " + niels.getProductionOfHeatAtCompleteRest() + " cal");
@@ -67,7 +66,11 @@ public class Main extends Application {
 //        System.out.println("Rounded integer = " + Math.round(roos.getProductionOfHeatAtCompleteRest()) + " cal \n");
 
 //        BodyConscious test = new BodyConscious();
-        System.out.println(BodyConscious.calculateCaloriesPerDay(-500, 100, niels, 1.4));
+//        System.out.println(BodyConscious.calculateCaloriesPerDay(-500, 100, niels, 1.4));
+
+        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
+        niels.setCaloriesBurnedAtCompleteRest(new HarrisBenedict());
+        System.out.println(niels.getCaloriesBurnedAtCompleteRest());
     }
 
 

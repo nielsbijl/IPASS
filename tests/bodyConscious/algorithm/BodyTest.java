@@ -1,5 +1,8 @@
 package bodyConscious.algorithm;
 
+import bodyConscious.algorithm.BMR.BMR;
+import bodyConscious.algorithm.BMR.HarrisBenedict;
+import bodyConscious.algorithm.BMR.MifflinStJeor;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -16,8 +19,9 @@ public class BodyTest {
     @Test
     public void setProductionOfHeatAtCompleteRest() {
         Body test = new Body("test", 0, 0, 0,"male", 0);
-        test.setProductionOfHeatAtCompleteRest(10);
-        assertEquals("setProductionOfHeatAtCompleteRest failed", 10, test.getProductionOfHeatAtCompleteRest(), 0);
+        BMR harrisBenedict = new HarrisBenedict();
+        test.setCaloriesBurnedAtCompleteRest(harrisBenedict);
+        assertEquals("setProductionOfHeatAtCompleteRest failed", harrisBenedict, test.getCaloriesBurnedAtCompleteRestEquation());
     }
 
     @Test
@@ -60,9 +64,9 @@ public class BodyTest {
 
     @Test
     public void getProductionOfHeatAtCompleteRest() {
-        Body test = new Body("test", 0, 0, 0,"male", 0);
-        test.setProductionOfHeatAtCompleteRest(1000);
-        assertEquals("getProductionOfHeatAtCompleteRest failed", 1000, test.getProductionOfHeatAtCompleteRest(), 0);
+        Body test = new Body("Niels", 83, 185, 18, "male", 17);
+        test.setCaloriesBurnedAtCompleteRest(new MifflinStJeor());
+        assertEquals("getProductionOfHeatAtCompleteRest failed", 1901.25, test.getCaloriesBurnedAtCompleteRest(), 0);
     }
 
     @Test
@@ -93,38 +97,6 @@ public class BodyTest {
     public void getBodyFatPercentage() {
         Body test = new Body("test", 0, 0, 0,"male", 0);
         assertEquals(0, test.getBodyFatPercentage());
-    }
-
-    @Test
-    public void calculateBMRharrisBenedict() {
-        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
-
-        niels.calculateBMRharrisBenedict();
-        assertEquals("calculateBMRharrisBenedict failed", 2011.8763000000001, niels.getProductionOfHeatAtCompleteRest(), 0);
-    }
-
-    @Test
-    public void calculateBMRharrisBenedictRevised() {
-        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
-
-        niels.calculateBMRharrisBenedictRevised();
-        assertEquals("calculateBMRharrisBenedictRevised failed", 1985.9420000000002, niels.getProductionOfHeatAtCompleteRest(), 0);
-    }
-
-    @Test
-    public void calculateBMRmifflinStJeor() {
-        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
-
-        niels.calculateBMRmifflinStJeor();
-        assertEquals("calculateBMRmifflinStJeor failed", 1901.25, niels.getProductionOfHeatAtCompleteRest(), 0);
-    }
-
-    @Test
-    public void calculateBMRkatchMcArdle() {
-        Body niels = new Body("Niels", 83, 185, 18, "male", 17);
-
-        niels.calculateBMRkatchMcArdle();
-        assertEquals("calculateBMRkatchMcArdle failed", 2162.8, niels.getProductionOfHeatAtCompleteRest(), 0);
     }
 
 }

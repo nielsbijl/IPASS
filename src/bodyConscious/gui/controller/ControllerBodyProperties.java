@@ -130,7 +130,7 @@ public class ControllerBodyProperties implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //This is the startup when the bodyProperties.fxml is opened
+        //This is the startup when the bodyproperties.fxml is opened
         //The set the saved body properties to the input fields by
         //fetching the saved profile in the profile.json
         try {

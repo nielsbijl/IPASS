@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="688.0" prefWidth="1199.0" style="-fx-background-color: #323232;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bodyConscious.gui.controller.ControllerBaseFrame">
+    <left>
+        <VBox style="-fx-background-color: #323232;">
+            <children>
+                <Button mnemonicParsing="false" onMouseClicked="#goHome" prefHeight="70.0" prefWidth="161.0" style="-fx-background-radius: 30 0 0 0;" stylesheets="@../../../css/stylesheet.css" text="Home" textFill="WHITE" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="bodyProperties" mnemonicParsing="false" onMouseClicked="#goToBodyProperties" prefHeight="76.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Body properties" textFill="WHITE" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="simulation" mnemonicParsing="false" onMouseClicked="#goToSimulation" prefHeight="80.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Simulation" textFill="WHITE" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin></Button>
+                <Button fx:id="charts" mnemonicParsing="false" onMouseClicked="#goToCharts" prefHeight="83.0" prefWidth="161.0" stylesheets="@../../../css/stylesheet.css" text="Charts" textFill="WHITE" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="30.0" />
+                    </VBox.margin></Button>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <AnchorPane fx:id="ap" prefHeight="719.0" prefWidth="1086.0" style="-fx-background-color: #636363; -fx-background-radius: 0 30 0 0;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="homePageSmallCloseButton" layoutX="1043.0" layoutY="14.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="25.0" style="-fx-background-color: #4f4f4f;" text="X" textFill="WHITE" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="14.0">
+                    <font>
+                        <Font name="System Bold" size="11.0" />
+                    </font>
+                </Button>
+            </children></AnchorPane>
+    </center>
+    <top>
+        <HBox prefHeight="49.0" prefWidth="1199.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fitHeight="50.0" fitWidth="55.0">
+                    <image>
+                        <Image url="/image/logo.png" />
+                    </image>
+                    <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                    </HBox.margin>
+                </ImageView>
+                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="BodyConsious" wrappingWidth="282.2265625">
+                    <font>
+                        <Font name="Arial Bold" size="40.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                    </HBox.margin>
+                    <effect>
+                        <InnerShadow color="#00000094" />
+                    </effect>
+                </Text>
+                <AnchorPane HBox.hgrow="ALWAYS">
+                    <children>
+                        <Button fx:id="exitButtonBaseFrame" alignment="CENTER" contentDisplay="RIGHT" layoutX="765.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#exit" prefHeight="36.0" prefWidth="56.0" style="-fx-background-color: #4f4f4f;" text="EXIT" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0">
+                            <font>
+                                <Font name="System Bold" size="11.0" />
+                            </font>
+                        </Button>
+                  <ImageView fx:id="settingsButton" fitHeight="36.0" fitWidth="36.0" layoutX="707.0" layoutY="15.0" onMouseClicked="#openSettings">
+                     <image>
+                        <Image url="@../../../image/settings.png" />
+                     </image>
+                  </ImageView>
+                    </children>
+                </AnchorPane>
+            </children>
+        </HBox>
+    </top>
+</BorderPane>

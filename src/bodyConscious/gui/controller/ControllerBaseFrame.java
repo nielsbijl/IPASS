@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -17,6 +18,9 @@ import java.util.ResourceBundle;
 
 
 public class ControllerBaseFrame implements Initializable {
+
+    @FXML
+    private ImageView settingsButton;
 
     @FXML
     public Button bodyProperties;
@@ -42,7 +46,7 @@ public class ControllerBaseFrame implements Initializable {
         bp.setCenter(ap);
     }
     public void goToBodyProperties(MouseEvent mouseEvent) {
-        loadPage("../fxml/bodyProperties");
+        loadPage("../fxml/bodyproperties");
     }
     public void goToSimulation(MouseEvent mouseEvent) {
         loadPage("../fxml/simulation");
@@ -50,6 +54,7 @@ public class ControllerBaseFrame implements Initializable {
     public void goToCharts(MouseEvent mouseEvent) {
         loadPage("../fxml/charts");
     }
+    public void openSettings(MouseEvent mouseEvent) { loadPage("../fxml/settings");}
 
     public void exit(MouseEvent mouseEvent) {
         Platform.exit();
@@ -60,6 +65,7 @@ public class ControllerBaseFrame implements Initializable {
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(page + ".fxml"));
+            root.setId(page);
         } catch (IOException e) {
             e.printStackTrace();
         }

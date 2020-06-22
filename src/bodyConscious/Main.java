@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         //GUI startup
-        Parent root = FXMLLoader.load(getClass().getResource("gui/fxml/base.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("gui/fxml/baseFrame.fxml"));
         primaryStage.setTitle("Body Conscious");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

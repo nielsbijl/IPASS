@@ -8,7 +8,7 @@ import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
+ 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -28,6 +28,10 @@ public class ControllerSettings implements Initializable {
     private RadioButton radioButtonKatchMcArdle;
     @FXML
     private RadioButton radioButtonMifflinStJeor;
+
+    public void saveSettings(MouseEvent mouseEvent) throws IOException {
+        writeSettings();
+    }
 
     public void writeSettings() throws IOException {
         JSONObject profile = new JSONObject();
@@ -62,7 +66,7 @@ public class ControllerSettings implements Initializable {
         return bodyData;
     }
 
-    private void setInputFields(Boolean harrisBenedict, Boolean harrisBenedictRevised, Boolean katchMcArdle, Boolean mifflinStJeor){
+    private void setSettings(Boolean harrisBenedict, Boolean harrisBenedictRevised, Boolean katchMcArdle, Boolean mifflinStJeor){
         if (harrisBenedict){
             this.BMRequation.selectToggle(radioButtonHarrisBenedict);
         }
@@ -80,18 +84,14 @@ public class ControllerSettings implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         BMRequation.selectToggle(radioButtonKatchMcArdle);
         try {
-            //hard coded to keep it clear
+            //hardcoded to keep it clear
             boolean harrisBenedict = (boolean) readSavedSettingsFromJSON().get(0);
             boolean harrisBenedictRevised = (boolean) readSavedSettingsFromJSON().get(1);
             boolean katchMcArdle = (boolean) readSavedSettingsFromJSON().get(2);
             boolean mifflinStJeor = (boolean) readSavedSettingsFromJSON().get(3);
-            setInputFields(harrisBenedict, harrisBenedictRevised, katchMcArdle, mifflinStJeor);
+            setSettings(harrisBenedict, harrisBenedictRevised, katchMcArdle, mifflinStJeor);
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-    }
-
-    public void saveSettings(MouseEvent mouseEvent) throws IOException {
-        writeSettings();
     }
 }

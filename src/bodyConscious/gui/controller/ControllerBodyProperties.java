@@ -3,6 +3,7 @@ package bodyConscious.gui.controller;
 import bodyConscious.algorithm.Body;
 import bodyConscious.algorithm.Goal;
 import bodyConscious.algorithm.Person;
+import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -20,7 +21,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerBodyProperties implements Initializable {
+public class ControllerBodyProperties extends GUI implements Initializable {
     @FXML
     private RadioButton radioButtonGainBodyfat;
     @FXML
@@ -69,9 +70,15 @@ public class ControllerBodyProperties implements Initializable {
         profile.put("GoalLoseBodyfat", radioButtonLoseBodyfat.isSelected());
         profile.put("GoalGainBodyfat", radioButtonGainBodyfat.isSelected());
 
-        FileWriter file = new FileWriter("src/bodyConscious/gui/profile.json");
-        file.write(profile.toJSONString());
-        file.close();
+        FileWriter file = null;
+        try {
+            file = new FileWriter("src/bodyConscious/gui/profile.json");
+            file.write(profile.toJSONString());
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            openPopup();
+        }
 
         System.out.println("JSON file created: "+profile);
     }
@@ -191,8 +198,18 @@ public class ControllerBodyProperties implements Initializable {
             setInputFields((String) bodyData.get(0), (String) bodyData.get(1), (String) bodyData.get(4), (String) bodyData.get(5), (String) bodyData.get(7), (String) bodyData.get(6),
                     (Boolean) bodyData.get(2), (Boolean) bodyData.get(3), (String) bodyData.get(8), (Boolean) bodyData.get(9), (Boolean) bodyData.get(10));
         } catch (IOException e) {
+            try {
+                openPopup();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             e.printStackTrace();
         } catch (ParseException e) {
+            try {
+                openPopup();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             e.printStackTrace();
         }
     }

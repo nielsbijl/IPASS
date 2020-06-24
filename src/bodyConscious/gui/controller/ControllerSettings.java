@@ -33,7 +33,6 @@ public class ControllerSettings extends GUI implements Initializable{
 
     public void saveSettings(MouseEvent mouseEvent) throws IOException{
         writeSettings();
-        openPopup();
     }
 
     public void writeSettings() throws IOException {
@@ -69,7 +68,8 @@ public class ControllerSettings extends GUI implements Initializable{
         return savedSettings;
     }
     public static BMR getBMREquation() throws IOException, ParseException {
-        ArrayList<Boolean> savedSettings = readSavedSettingsFromJSON();
+        ArrayList<Boolean> savedSettings = null;
+        savedSettings = readSavedSettingsFromJSON();
         if (savedSettings.get(0)){
             return new HarrisBenedict();
         }

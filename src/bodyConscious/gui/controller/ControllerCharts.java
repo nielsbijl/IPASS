@@ -2,6 +2,7 @@ package bodyConscious.gui.controller;
 
 import bodyConscious.algorithm.CalorieCalculations;
 import bodyConscious.algorithm.Person;
+import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
@@ -13,7 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerCharts implements Initializable {
+public class ControllerCharts extends GUI implements Initializable {
     private Person person;
     private int weeks;
 
@@ -23,14 +24,14 @@ public class ControllerCharts implements Initializable {
     @FXML
     private LineChart<?, ?> fatChart;
 
-    public ArrayList createCaloriePlan() throws IOException, ParseException {
+    public ArrayList createCaloriePlan() {
         int calorieDeficitOrSurplusDaily = CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person);
         int amountOfDays = CalorieCalculations.amountOfDaysToAchieveGoal(calorieDeficitOrSurplusDaily, this.person);
         ArrayList caloriesDailyPlan = CalorieCalculations.calculateCaloriesPerDayPlan(calorieDeficitOrSurplusDaily, amountOfDays, this.person);
         ArrayList calories = CalorieCalculations.calculateCaloriesPerWeekPlan(caloriesDailyPlan);
         return calories;
     }
-    public ArrayList createCalorieBMRPlan() throws IOException, ParseException {
+    public ArrayList createCalorieBMRPlan() {
         double bmr = this.person.calculateTDEE();
         ArrayList bmrPlan = new ArrayList();
         for (int i = 0; i < this.weeks; i++) {
@@ -39,7 +40,7 @@ public class ControllerCharts implements Initializable {
         return bmrPlan;
     }
 
-    public void fillCalorieChart() throws IOException, ParseException {
+    public void fillCalorieChart(){
         ArrayList caloriesToAchieveGoal = createCaloriePlan();
         ArrayList caloriesToChangeNothings = createCalorieBMRPlan();
         System.out.println(caloriesToChangeNothings);
@@ -56,7 +57,7 @@ public class ControllerCharts implements Initializable {
         this.calorieChart.getData().add(seriesCaloriesToAchieveGoal);
         this.calorieChart.getData().add(seriesCaloriesToChangeNothing);
     }
-    public void fillFatChart() throws IOException, ParseException {
+    public void fillFatChart(){
         int calorieDeficitOrSurplusDaily = CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person);
         ArrayList fatWeekly = CalorieCalculations.amountOfFatPerWeek(calorieDeficitOrSurplusDaily, 10);
         System.out.println(fatWeekly);
@@ -78,8 +79,18 @@ public class ControllerCharts implements Initializable {
             fillCalorieChart();
             fillFatChart();
         } catch (IOException e) {
+            try {
+                openPopup();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             e.printStackTrace();
         } catch (ParseException e) {
+            try {
+                openPopup();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
             e.printStackTrace();
         }
     }

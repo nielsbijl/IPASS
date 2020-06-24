@@ -3,9 +3,9 @@ package bodyConscious.algorithm;
 import java.util.ArrayList;
 
 public class CalorieCalculations {
-    public static ArrayList calculateCaloriesPerDayPlan(int calorieDefecitOrSurplus, int days, Person person){
+    public static ArrayList<Number> calculateCaloriesPerDayPlan(int calorieDefecitOrSurplus, int days, Person person){
         //Creates a daily plan how many calories the person needs to eat
-        ArrayList<Integer> dailyCaloriesPlan = new ArrayList<>();
+        ArrayList<Number> dailyCaloriesPlan = new ArrayList<>();
         Person newPerson = person;
         for (int i = 0; i < days; i++) {
             //calculate todays calories
@@ -21,6 +21,21 @@ public class CalorieCalculations {
         }
         return dailyCaloriesPlan;
     }
+    public static ArrayList calculateCaloriesPerWeekPlan(ArrayList<Number> caloriesPerDayPlan){
+        ArrayList<Number> weeklyCaloriesPlan = new ArrayList<>();
+        int dayscounter = 0;
+        int totalCaloriesWeek = 0;
+        for (Number dailyCalorie : caloriesPerDayPlan){
+            if (dayscounter == 7){
+                weeklyCaloriesPlan.add(totalCaloriesWeek / 7);
+                totalCaloriesWeek = 0;
+                dayscounter = 0;
+            }
+            totalCaloriesWeek += (int) dailyCalorie;
+            dayscounter ++;
+        }
+        return weeklyCaloriesPlan;
+    }
     public static int calculateFatLosingOrGaining(int days, int caloriesNeededPerDay, int caloriesEatenPerDay){
         //if caloriesCurrentlyGainingOrLosing < 0 ---> losing weight
         //if caloriesCurrentlyGainingOrLosing > 0 ---> gaining weight
@@ -30,7 +45,7 @@ public class CalorieCalculations {
     public static int amountOfDaysToAchieveGoal(int calorieDefecitOrSurplusDaily, Person person){
         Goal goal = person.getGoal();
         double oneGram = 1 / Calorie.humanFatMass; //1gram humanFat = amount of calories....
-        int totalAmountOfCalories = (int) (goal.getAmountOfBodyFat() * oneGram);
+        int totalAmountOfCalories = (int) (goal.getAmountOfBodyFat() * 1000 * oneGram); //goal.getAmountOfBodyFat() KG -> Gram
         return totalAmountOfCalories / calorieDefecitOrSurplusDaily;
     }
 }

@@ -1,5 +1,8 @@
 package bodyConscious.gui.controller;
 
+import bodyConscious.algorithm.Body;
+import bodyConscious.algorithm.Goal;
+import bodyConscious.algorithm.Person;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -19,9 +22,9 @@ import java.util.ResourceBundle;
 
 public class ControllerBodyProperties implements Initializable {
     @FXML
-    public RadioButton radioButtonGainBodyfat;
+    private RadioButton radioButtonGainBodyfat;
     @FXML
-    public RadioButton radioButtonLoseBodyfat;
+    private RadioButton radioButtonLoseBodyfat;
     @FXML
     private RadioButton radioButtonMale;
     @FXML
@@ -125,6 +128,54 @@ public class ControllerBodyProperties implements Initializable {
         else if (goalGainBodyfat){
             this.Goal.selectToggle(radioButtonGainBodyfat);
         }
+    }
+    public static Body createBodyWithBodyFatFromArrayList(ArrayList arrayList){
+        ArrayList bodyProperties = arrayList;
+        Body body;
+        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
+        if ((boolean)bodyProperties.get(2)){ //if male
+            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "male", Integer.parseInt((String) bodyProperties.get(6)));
+        }
+        else {
+            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "female", Integer.parseInt((String) bodyProperties.get(6)));
+        }
+        return body;
+    }
+    public static Body createBodyWithoutBodyFatFromArrayList(ArrayList arrayList){
+        ArrayList bodyProperties = arrayList;
+        Body body;
+        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
+        if ((boolean) bodyProperties.get(2)){ //if male
+            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "male");
+        }
+        else {
+            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "female");
+        }
+        return body;
+    }
+    public static Body createBodyFromArrayList(ArrayList arrayList){
+        ArrayList bodyProperties = arrayList;
+        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
+        Body body;
+        if (Double.parseDouble((String) bodyProperties.get(6)) < 1){//(if bodyfat < 1) --> create body without body fat percentage
+            body = createBodyWithoutBodyFatFromArrayList(arrayList);
+        }
+        else {
+            body = createBodyWithBodyFatFromArrayList(arrayList);
+        }
+        return body;
+    }
+    public static Goal createGoalFromArrayList(ArrayList arrayList){
+        ArrayList bodyProperties = arrayList;
+        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
+        Goal goal = new Goal((boolean) bodyProperties.get(9), (boolean) bodyProperties.get(10), Double.parseDouble((String) bodyProperties.get(8)));
+        return goal;
+    }
+    public static Person createPersonFromArrayList(ArrayList arrayList){
+        ArrayList bodyProperties = arrayList;
+        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
+        Person person = new Person((String) bodyProperties.get(0), createBodyFromArrayList(arrayList), createGoalFromArrayList(arrayList), Double.parseDouble((String) bodyProperties.get(4)));
+        return person;
     }
 
 

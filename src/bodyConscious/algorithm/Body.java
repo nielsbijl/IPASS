@@ -1,13 +1,14 @@
 package bodyConscious.algorithm;
 
 import bodyConscious.algorithm.BMR.BMR;
+import bodyConscious.algorithm.BMR.HarrisBenedictRevised;
 
 public class Body {
     private BMR caloriesBurnedAtCompleteRest;
     private double mass;
     private double height;
     private int age;
-    final String gender;
+    private String gender;
     private int bodyFatPercentage;
 
     //constructor
@@ -16,6 +17,7 @@ public class Body {
         this.height = heightCM;
         this.age = ageYEARS;
         this.gender = gender;
+        this.caloriesBurnedAtCompleteRest = new HarrisBenedictRevised(); //HarrisBenedictRevised default
     }
     public Body(double massKG, double heightCM, int ageYEARS, String gender, int bodyFatPercentage){
         this.mass = massKG;
@@ -23,6 +25,7 @@ public class Body {
         this.age = ageYEARS;
         this.gender = gender;
         this.bodyFatPercentage = bodyFatPercentage;
+        this.caloriesBurnedAtCompleteRest = new HarrisBenedictRevised(); //HarrisBenedictRevised default
     }
 
     //setters

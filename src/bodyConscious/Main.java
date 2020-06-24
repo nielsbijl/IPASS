@@ -71,6 +71,8 @@ public class Main extends Application {
         Body niels = new Body(83, 185, 18, "male", 17);
         niels.setCaloriesBurnedAtCompleteRest(new HarrisBenedict());
         System.out.println(niels.getCaloriesBurnedAtCompleteRest());
+
+
     }
 
 

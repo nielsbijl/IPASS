@@ -10,7 +10,7 @@ public class CalorieCalculations {
         for (int i = 0; i < days; i++) {
             //calculate todays calories
             double BMR = newPerson.getBody().getCaloriesBurnedAtCompleteRest();
-            int TDEE = newPerson.calculateTDEE(BMR, newPerson.getPhysicalActivityLevel());
+            int TDEE = newPerson.calculateTDEE();
             int caloriesToday = TDEE + calorieDefecitOrSurplus;
             dailyCaloriesPlan.add(caloriesToday);
 
@@ -46,6 +46,27 @@ public class CalorieCalculations {
         Goal goal = person.getGoal();
         double oneGram = 1 / Calorie.humanFatMass; //1gram humanFat = amount of calories....
         int totalAmountOfCalories = (int) (goal.getAmountOfBodyFat() * 1000 * oneGram); //goal.getAmountOfBodyFat() KG -> Gram
-        return totalAmountOfCalories / calorieDefecitOrSurplusDaily;
+        return totalAmountOfCalories / Math.abs(calorieDefecitOrSurplusDaily);
+    }
+    public static int calorieDeficitOrSurplusDaily(int amountOfCalories, Person person){
+        int calorieDeficitOrSurplusDaily = amountOfCalories;
+        if (person.getGoal().isGainBodyFat()){
+            calorieDeficitOrSurplusDaily = amountOfCalories;
+        }
+        else if (person.getGoal().isLoseBodyFat()){
+            calorieDeficitOrSurplusDaily = -amountOfCalories;
+        }
+        return calorieDeficitOrSurplusDaily;
+    }
+    public static ArrayList amountOfFatPerWeek(int calorieDeficitOrSurplusDaily, int amountOfWeeks){
+        ArrayList<Number> amountOfFatLossPerWeek = new ArrayList<>();
+        int calorieDeficitOrSurplusWeekly = calorieDeficitOrSurplusDaily * 7;
+        double amountOfFatPerWeek = (calorieDeficitOrSurplusWeekly * Calorie.humanFatMass) / 1000; //kg
+        double totalFat = 0;
+        for (int i = 0; i < amountOfWeeks; i++) {
+            totalFat = totalFat + amountOfFatPerWeek;
+            amountOfFatLossPerWeek.add(totalFat);
+        }
+        return amountOfFatLossPerWeek;
     }
 }

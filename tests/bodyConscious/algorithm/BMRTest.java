@@ -4,14 +4,17 @@ import bodyConscious.algorithm.BMR.HarrisBenedict;
 import bodyConscious.algorithm.BMR.HarrisBenedictRevised;
 import bodyConscious.algorithm.BMR.KatchMcArdle;
 import bodyConscious.algorithm.BMR.MifflinStJeor;
+import org.json.simple.parser.ParseException;
 import org.junit.Test;
+
+import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
 
 public class BMRTest {
 
     @Test
-    public void harrisBenedict() {
+    public void harrisBenedict() throws IOException, ParseException {
         Body niels = new Body(83, 185, 18, "male", 17);
         niels.setCaloriesBurnedAtCompleteRest(new HarrisBenedict());
         Body roos = new Body(48, 165, 18, "female", 25);
@@ -21,7 +24,7 @@ public class BMRTest {
     }
 
     @Test
-    public void harrisBenedictRevised() {
+    public void harrisBenedictRevised() throws IOException, ParseException {
         Body niels = new Body(83, 185, 18, "male", 17);
         niels.setCaloriesBurnedAtCompleteRest(new HarrisBenedictRevised());
         Body roos = new Body(48, 165, 18, "female", 25);
@@ -31,7 +34,7 @@ public class BMRTest {
     }
 
     @Test
-    public void mifflinStJeor() {
+    public void mifflinStJeor() throws IOException, ParseException {
         Body niels = new Body(83, 185, 18, "male", 17);
         niels.setCaloriesBurnedAtCompleteRest(new MifflinStJeor());
         Body roos = new Body(48, 165, 18, "female", 25);
@@ -41,7 +44,7 @@ public class BMRTest {
     }
 
     @Test
-    public void katchMcArdle() {
+    public void katchMcArdle() throws IOException, ParseException {
         Body niels = new Body(83, 185, 18, "male", 17);
         niels.setCaloriesBurnedAtCompleteRest(new KatchMcArdle());
         Body roos = new Body(48, 165, 18, "female", 25);

@@ -1,7 +1,10 @@
 package bodyConscious.algorithm;
 
 import bodyConscious.algorithm.BMR.BMR;
-import bodyConscious.algorithm.BMR.HarrisBenedictRevised;
+import bodyConscious.gui.controller.ControllerSettings;
+import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 
 public class Body {
     private BMR caloriesBurnedAtCompleteRest;
@@ -12,20 +15,20 @@ public class Body {
     private int bodyFatPercentage;
 
     //constructor
-    public Body(double massKG, double heightCM, int ageYEARS, String gender){
+    public Body(double massKG, double heightCM, int ageYEARS, String gender) throws IOException, ParseException {
         this.mass = massKG;
         this.height = heightCM;
         this.age = ageYEARS;
         this.gender = gender;
-        this.caloriesBurnedAtCompleteRest = new HarrisBenedictRevised(); //HarrisBenedictRevised default
+        this.caloriesBurnedAtCompleteRest = ControllerSettings.getBMREquation(); //HarrisBenedictRevised default
     }
-    public Body(double massKG, double heightCM, int ageYEARS, String gender, int bodyFatPercentage){
+    public Body(double massKG, double heightCM, int ageYEARS, String gender, int bodyFatPercentage) throws IOException, ParseException {
         this.mass = massKG;
         this.height = heightCM;
         this.age = ageYEARS;
         this.gender = gender;
         this.bodyFatPercentage = bodyFatPercentage;
-        this.caloriesBurnedAtCompleteRest = new HarrisBenedictRevised(); //HarrisBenedictRevised default
+        this.caloriesBurnedAtCompleteRest = ControllerSettings.getBMREquation(); //HarrisBenedictRevised default
     }
 
     //setters

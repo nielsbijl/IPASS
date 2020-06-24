@@ -55,7 +55,7 @@
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
                     <yAxis>
-                      <NumberAxis side="LEFT" tickLabelFill="WHITE" />
+                      <NumberAxis forceZeroInRange="false" side="LEFT" tickLabelFill="WHITE" />
                     </yAxis>
                   </LineChart>
                </center>

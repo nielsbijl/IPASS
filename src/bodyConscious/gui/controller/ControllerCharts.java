@@ -1,6 +1,5 @@
 package bodyConscious.gui.controller;
 
-import bodyConscious.algorithm.Body;
 import bodyConscious.algorithm.CalorieCalculations;
 import bodyConscious.algorithm.Person;
 import javafx.fxml.FXML;
@@ -15,43 +14,69 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerCharts implements Initializable {
+    private Person person;
+    private int weeks;
+
     @FXML
     private LineChart<?, ?> calorieChart;
 
     @FXML
     private LineChart<?, ?> fatChart;
 
-    public void fillCalorieChart() throws IOException, ParseException {
-        ArrayList bodyProperties = ControllerBodyProperties.readSavedBodyPropertiesFromJSON();
-        Body body = ControllerBodyProperties.createBodyWithBodyFatFromArrayList(bodyProperties);
-        Person person = ControllerBodyProperties.createPersonFromArrayList(bodyProperties);
-        int calorieDefecitOrSurplusDaily = 0;
-        if (person.getGoal().isGainBodyFat()){
-            calorieDefecitOrSurplusDaily = 500;
-        }
-        else if (person.getGoal().isLoseBodyFat()){
-            calorieDefecitOrSurplusDaily = -500;
-        }
-
-        int amountOfDays = CalorieCalculations.amountOfDaysToAchieveGoal(calorieDefecitOrSurplusDaily, person); //ERROR
-//        int amountOfDays = 60;
-        ArrayList caloriesDailyPlan = CalorieCalculations.calculateCaloriesPerDayPlan(calorieDefecitOrSurplusDaily, amountOfDays, person);
+    public ArrayList createCaloriePlan() throws IOException, ParseException {
+        int calorieDeficitOrSurplusDaily = CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person);
+        int amountOfDays = CalorieCalculations.amountOfDaysToAchieveGoal(calorieDeficitOrSurplusDaily, this.person);
+        ArrayList caloriesDailyPlan = CalorieCalculations.calculateCaloriesPerDayPlan(calorieDeficitOrSurplusDaily, amountOfDays, this.person);
         ArrayList calories = CalorieCalculations.calculateCaloriesPerWeekPlan(caloriesDailyPlan);
-
-        System.out.println(calories);
-        XYChart.Series series = new XYChart.Series();
-        for (int i = 0; i < calories.size(); i++) {
-            series.getData().add(new XYChart.Data<>("week " + i, calories.get(i)));
+        return calories;
+    }
+    public ArrayList createCalorieBMRPlan() throws IOException, ParseException {
+        double bmr = this.person.calculateTDEE();
+        ArrayList bmrPlan = new ArrayList();
+        for (int i = 0; i < this.weeks; i++) {
+            bmrPlan.add(bmr);
         }
-        series.setName("Calories you need to eat");
+        return bmrPlan;
+    }
 
-        calorieChart.getData().add(series);
+    public void fillCalorieChart() throws IOException, ParseException {
+        ArrayList caloriesToAchieveGoal = createCaloriePlan();
+        ArrayList caloriesToChangeNothings = createCalorieBMRPlan();
+        System.out.println(caloriesToChangeNothings);
+        System.out.println(caloriesToAchieveGoal);
+        XYChart.Series seriesCaloriesToAchieveGoal = new XYChart.Series();
+        XYChart.Series seriesCaloriesToChangeNothing= new XYChart.Series();
+        for (int i = 0; i < caloriesToAchieveGoal.size(); i++) {
+            seriesCaloriesToAchieveGoal.getData().add(new XYChart.Data<>("week " + i, caloriesToAchieveGoal.get(i)));
+            seriesCaloriesToChangeNothing.getData().add(new XYChart.Data<>("week " + i, caloriesToChangeNothings.get(i)));
+        }
+        seriesCaloriesToAchieveGoal.setName("Calories you need to eat to achieve your goal");
+        seriesCaloriesToChangeNothing.setName("Calories you need to eat to stay the same");
+
+        this.calorieChart.getData().add(seriesCaloriesToAchieveGoal);
+        this.calorieChart.getData().add(seriesCaloriesToChangeNothing);
+    }
+    public void fillFatChart() throws IOException, ParseException {
+        int calorieDeficitOrSurplusDaily = CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person);
+        ArrayList fatWeekly = CalorieCalculations.amountOfFatPerWeek(calorieDeficitOrSurplusDaily, 10);
+        System.out.println(fatWeekly);
+        XYChart.Series series = new XYChart.Series();
+        for (int i = 0; i < fatWeekly.size(); i++) {
+            series.getData().add(new XYChart.Data<>("week " + i, fatWeekly.get(i)));
+        }
+        series.setName("Amount of kg fat");
+
+        this.fatChart.getData().add(series);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
+            ArrayList bodyProperties = ControllerBodyProperties.readSavedBodyPropertiesFromJSON();
+            this.person = ControllerBodyProperties.createPersonFromArrayList(bodyProperties);
+            this.weeks = CalorieCalculations.amountOfDaysToAchieveGoal(CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person), this.person) / 7;
             fillCalorieChart();
+            fillFatChart();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {

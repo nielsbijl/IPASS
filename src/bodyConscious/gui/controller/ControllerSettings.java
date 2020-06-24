@@ -1,5 +1,6 @@
 package bodyConscious.gui.controller;
 
+import bodyConscious.algorithm.BMR.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -8,7 +9,7 @@ import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
- 
+
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -47,8 +48,8 @@ public class ControllerSettings implements Initializable {
         System.out.println("JSON file created: "+profile);
     }
 
-    public static ArrayList readSavedSettingsFromJSON() throws IOException, ParseException {
-        ArrayList bodyData = new ArrayList();
+    public static ArrayList<Boolean> readSavedSettingsFromJSON() throws IOException, ParseException {
+        ArrayList<Boolean> savedSettings = new ArrayList();
 
         JSONParser parser = new JSONParser();
         JSONObject profile = (JSONObject) parser.parse(new FileReader("src/bodyConscious/gui/settings.json"));
@@ -57,13 +58,29 @@ public class ControllerSettings implements Initializable {
         Boolean katchMcArdle = (Boolean) profile.get("KatchMcArdle");
         Boolean mifflinStJeor = (Boolean) profile.get("MifflinStJeor");
 
-        bodyData.add(harrisBenedict);
-        bodyData.add(harrisBenedictRevised);
-        bodyData.add(katchMcArdle);
-        bodyData.add(mifflinStJeor);
-        System.out.println(bodyData);
+        savedSettings.add(harrisBenedict);
+        savedSettings.add(harrisBenedictRevised);
+        savedSettings.add(katchMcArdle);
+        savedSettings.add(mifflinStJeor);
+        System.out.println(savedSettings);
 
-        return bodyData;
+        return savedSettings;
+    }
+    public static BMR getBMREquation() throws IOException, ParseException {
+        ArrayList<Boolean> savedSettings = readSavedSettingsFromJSON();
+        if (savedSettings.get(0)){
+            return new HarrisBenedict();
+        }
+        else if (savedSettings.get(1)){
+            return new HarrisBenedictRevised();
+        }
+        else if (savedSettings.get(2)){
+            return new KatchMcArdle();
+        }
+        else if (savedSettings.get(3)){
+            return new MifflinStJeor();
+        }
+        return new HarrisBenedictRevised(); //default
     }
 
     private void setSettings(Boolean harrisBenedict, Boolean harrisBenedictRevised, Boolean katchMcArdle, Boolean mifflinStJeor){
@@ -85,10 +102,10 @@ public class ControllerSettings implements Initializable {
         BMRequation.selectToggle(radioButtonKatchMcArdle);
         try {
             //hardcoded to keep it clear
-            boolean harrisBenedict = (boolean) readSavedSettingsFromJSON().get(0);
-            boolean harrisBenedictRevised = (boolean) readSavedSettingsFromJSON().get(1);
-            boolean katchMcArdle = (boolean) readSavedSettingsFromJSON().get(2);
-            boolean mifflinStJeor = (boolean) readSavedSettingsFromJSON().get(3);
+            boolean harrisBenedict = readSavedSettingsFromJSON().get(0);
+            boolean harrisBenedictRevised = readSavedSettingsFromJSON().get(1);
+            boolean katchMcArdle = readSavedSettingsFromJSON().get(2);
+            boolean mifflinStJeor = readSavedSettingsFromJSON().get(3);
             setSettings(harrisBenedict, harrisBenedictRevised, katchMcArdle, mifflinStJeor);
         } catch (IOException | ParseException e) {
             e.printStackTrace();

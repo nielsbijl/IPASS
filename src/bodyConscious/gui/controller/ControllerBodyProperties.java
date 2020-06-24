@@ -129,7 +129,7 @@ public class ControllerBodyProperties implements Initializable {
             this.Goal.selectToggle(radioButtonGainBodyfat);
         }
     }
-    public static Body createBodyWithBodyFatFromArrayList(ArrayList arrayList){
+    public static Body createBodyWithBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         ArrayList bodyProperties = arrayList;
         Body body;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
@@ -141,7 +141,7 @@ public class ControllerBodyProperties implements Initializable {
         }
         return body;
     }
-    public static Body createBodyWithoutBodyFatFromArrayList(ArrayList arrayList){
+    public static Body createBodyWithoutBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         ArrayList bodyProperties = arrayList;
         Body body;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
@@ -153,7 +153,7 @@ public class ControllerBodyProperties implements Initializable {
         }
         return body;
     }
-    public static Body createBodyFromArrayList(ArrayList arrayList){
+    public static Body createBodyFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         ArrayList bodyProperties = arrayList;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
         Body body;
@@ -171,7 +171,7 @@ public class ControllerBodyProperties implements Initializable {
         Goal goal = new Goal((boolean) bodyProperties.get(9), (boolean) bodyProperties.get(10), Double.parseDouble((String) bodyProperties.get(8)));
         return goal;
     }
-    public static Person createPersonFromArrayList(ArrayList arrayList){
+    public static Person createPersonFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         ArrayList bodyProperties = arrayList;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
         Person person = new Person((String) bodyProperties.get(0), createBodyFromArrayList(arrayList), createGoalFromArrayList(arrayList), Double.parseDouble((String) bodyProperties.get(4)));

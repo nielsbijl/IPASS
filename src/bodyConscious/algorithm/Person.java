@@ -12,13 +12,13 @@ public class Person {
         this.body = body;
         this.goal = goal;
         this.physicalActivityLevel = physicalActivityLevel;
-        this.TDEE = calculateTDEE(body.getCaloriesBurnedAtCompleteRest(), physicalActivityLevel);
+        this.TDEE = calculateTDEE();
     }
 
-    public int calculateTDEE(double BRM, double physicalActivityLevel){
+    public int calculateTDEE(){
         //Total Daily Energy Expenditure
         //Basal metabolic rate * physical activity level
-        int tdee = (int) (BRM * physicalActivityLevel);
+        int tdee = (int) (this.body.getCaloriesBurnedAtCompleteRest() * this.physicalActivityLevel);
         return tdee;
     }
 
@@ -38,7 +38,7 @@ public class Person {
         return TDEE;
     }
     public void setTDEE() {
-        this.TDEE = calculateTDEE(this.body.getCaloriesBurnedAtCompleteRest(), this.physicalActivityLevel);
+        this.TDEE = calculateTDEE();
     }
     public Goal getGoal() {
         return goal;

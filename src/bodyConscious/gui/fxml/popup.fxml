@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="224.0" prefWidth="533.0" styleClass="gridItem" stylesheets="@../../../css/stylesheetPages.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="bodyConscious.gui.controller.ControllerPopup">
+   <children>
+      <Label layoutX="25.0" layoutY="69.0" prefHeight="43.0" prefWidth="484.0" text="Please set your body properties and don't forget to save!" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="closePopupButton" layoutX="245.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#closePopup" styleClass="gridHeader" stylesheets="@../../../css/stylesheetPages.css" text="Ok" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

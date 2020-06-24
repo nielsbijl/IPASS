@@ -1,6 +1,6 @@
 package bodyConscious.gui.controller;
 
-import javafx.application.Platform;
+import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 
 
 
-public class ControllerBaseFrame implements Initializable {
+public class ControllerBaseFrame extends GUI implements Initializable {
 
     @FXML
     private ImageView settingsButton;
@@ -56,9 +56,8 @@ public class ControllerBaseFrame implements Initializable {
     }
     public void openSettings(MouseEvent mouseEvent) { loadPage("../fxml/settings");}
 
-    public void exit(MouseEvent mouseEvent) {
-        Platform.exit();
-        System.exit(0);
+    public void exit(MouseEvent mouseEvent) throws IOException {
+        exit();
     }
 
     private void loadPage(String page){

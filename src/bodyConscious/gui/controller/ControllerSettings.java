@@ -1,6 +1,7 @@
 package bodyConscious.gui.controller;
 
 import bodyConscious.algorithm.BMR.*;
+import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
@@ -17,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class ControllerSettings implements Initializable {
+public class ControllerSettings extends GUI implements Initializable{
     @FXML
     private ToggleGroup BMRequation;
 
@@ -30,8 +31,9 @@ public class ControllerSettings implements Initializable {
     @FXML
     private RadioButton radioButtonMifflinStJeor;
 
-    public void saveSettings(MouseEvent mouseEvent) throws IOException {
+    public void saveSettings(MouseEvent mouseEvent) throws IOException{
         writeSettings();
+        openPopup();
     }
 
     public void writeSettings() throws IOException {

@@ -53,8 +53,8 @@ public class ControllerBodyProperties implements Initializable {
     public void saveBodyProperties(MouseEvent mouseEvent) throws IOException {
         System.out.println("Save");
         writeSavedBodyPropertiesToJSON();
-
     }
+
     public void writeSavedBodyPropertiesToJSON() throws IOException {
         JSONObject profile = new JSONObject();
         profile.put("Name", nameInput.getText());

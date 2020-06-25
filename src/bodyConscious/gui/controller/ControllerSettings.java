@@ -1,5 +1,9 @@
 package bodyConscious.gui.controller;
 
+//Dit is de controller class van de settings.fxml
+//Als settings.fxml geladen wordt, dan wordt deze class met zijn functies aan geroepen
+//Deze class regelt alles wat er in de fxml file gebeurt
+
 import bodyConscious.algorithm.BMR.*;
 import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
@@ -19,6 +23,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerSettings extends GUI implements Initializable{
+    //Dit zijn alle radio buttons om te kiezen welke Basal Metalbolic Rate equation je wilt gebruiken
+    //De ToggleGroup is er voor zodat je maar 1 equation kunt gebruiken
     @FXML
     private ToggleGroup BMRequation;
 
@@ -32,10 +38,13 @@ public class ControllerSettings extends GUI implements Initializable{
     private RadioButton radioButtonMifflinStJeor;
 
     public void saveSettings(MouseEvent mouseEvent) throws IOException{
+        //Deze functie wordt aan geroepen als je op de save button klikt
+        //Hij schrijft je keuze weg naar de settings.json file
         writeSettings();
     }
 
     public void writeSettings() throws IOException {
+        //Deze functie schrijft je gekozen Basal Metabolic Rate keuze weg naar de settings.json file
         JSONObject profile = new JSONObject();
         profile.put("HarrisBenedict", radioButtonHarrisBenedict.isSelected());
         profile.put("HarrisBenedictRevised", radioButtonHarrisBenedictRevised.isSelected());
@@ -50,6 +59,11 @@ public class ControllerSettings extends GUI implements Initializable{
     }
 
     public static ArrayList<Boolean> readSavedSettingsFromJSON() throws IOException, ParseException {
+        //Deze functie leest de settings.json uit
+        //Hij kijkt welke settings allemaal true en false zijn en returnt dit als arraylist
+        //Deze functie is static omdat andere classes hier gebruik van moeten maken
+        //Deze functie staat niet in de GUI abstract class omdat niet alleen classes van de gui hier gebruik van moeten maken
+        //Maar ook classes uit het algoritme gedeelte
         ArrayList<Boolean> savedSettings = new ArrayList();
 
         JSONParser parser = new JSONParser();
@@ -68,6 +82,11 @@ public class ControllerSettings extends GUI implements Initializable{
         return savedSettings;
     }
     public static BMR getBMREquation() throws IOException, ParseException {
+        //Deze functie krijgt alle settings mee vanuit een arraylist
+        //Hij kijkt welke Basal Metabolic Rate equation opgeslagen is en returnt dit
+        //Deze functie is static omdat andere classes hier gebruik van moeten maken
+        //Deze functie staat niet in de GUI abstract class omdat niet alleen classes van de gui hier gebruik van moeten maken
+        //Maar ook classes uit het algoritme gedeelte
         ArrayList<Boolean> savedSettings = null;
         savedSettings = readSavedSettingsFromJSON();
         if (savedSettings.get(0)){
@@ -82,10 +101,12 @@ public class ControllerSettings extends GUI implements Initializable{
         else if (savedSettings.get(3)){
             return new MifflinStJeor();
         }
-        return new HarrisBenedictRevised(); //default
+        return new HarrisBenedictRevised(); //default // Als alle settings false zijn wordt HarrisBenedictRevised gereturnd
     }
 
     private void setSettings(Boolean harrisBenedict, Boolean harrisBenedictRevised, Boolean katchMcArdle, Boolean mifflinStJeor){
+        //Deze functie krijgt alle settings mee
+        //Hij zet de opeslagen settings in de input velden zoals ze eerder opgeslagen waren
         if (harrisBenedict){
             this.BMRequation.selectToggle(radioButtonHarrisBenedict);
         }
@@ -101,7 +122,10 @@ public class ControllerSettings extends GUI implements Initializable{
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        BMRequation.selectToggle(radioButtonKatchMcArdle);
+        //Deze functie wordt aangeroepen als de settings.fxml geladen wordt
+        //Hij zet als eerste de HarrisBenedictRevised setting als gekozen omdat dit de default setting is
+        //Dan kijkt die welke settings eerder opgeslagen waren en veranderd de settings hier naar
+        BMRequation.selectToggle(radioButtonHarrisBenedictRevised);
         try {
             //hardcoded to keep it clear
             boolean harrisBenedict = readSavedSettingsFromJSON().get(0);

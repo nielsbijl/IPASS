@@ -1,8 +1,9 @@
 package bodyConscious.gui.controller;
 
-import bodyConscious.algorithm.Body;
-import bodyConscious.algorithm.Goal;
-import bodyConscious.algorithm.Person;
+//Dit is de controller class van de bodyproperties.fxml
+//Als bodyproperties.fxml geladen wordt, dan wordt deze class met zijn functies aan geroepen
+//Deze class regelt alles wat er in de fxml file gebeurt
+
 import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,10 +12,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +21,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerBodyProperties extends GUI implements Initializable {
+    //Dit zijn alle input velden voor de bodyproperties
     @FXML
     private RadioButton radioButtonGainBodyfat;
     @FXML
@@ -52,11 +52,15 @@ public class ControllerBodyProperties extends GUI implements Initializable {
     private TextField ageInput;
 
     public void saveBodyProperties(MouseEvent mouseEvent) throws IOException {
-        System.out.println("Save");
+        //Deze functie wordt aangeroepen als je op de save button clickt
+        //Hij schrijft dan alle input velden weg naar een JSON file om ze op te kunnen slaan
+
         writeSavedBodyPropertiesToJSON();
     }
 
     public void writeSavedBodyPropertiesToJSON() throws IOException {
+        //Deze functie leest de input velden en schrijft ze weg naar de profile.json file
+
         JSONObject profile = new JSONObject();
         profile.put("Name", nameInput.getText());
         profile.put("Mass", weightInput.getText());
@@ -82,39 +86,11 @@ public class ControllerBodyProperties extends GUI implements Initializable {
 
         System.out.println("JSON file created: "+profile);
     }
-    public static ArrayList readSavedBodyPropertiesFromJSON() throws IOException, ParseException {
-        ArrayList bodyData = new ArrayList();
 
-        JSONParser parser = new JSONParser();
-        JSONObject profile = (JSONObject) parser.parse(new FileReader("src/bodyConscious/gui/profile.json"));
-        String name = (String)profile.get("Name");
-        String age = (String)profile.get("Age");
-        Boolean male = (Boolean) profile.get("Male");
-        Boolean female = (Boolean) profile.get("Female");
-        String pal = (String)profile.get("Pal");
-        String height = (String)profile.get("Height");
-        String bodyfat = (String)profile.get("Bodyfat");
-        String mass = (String)profile.get("Mass");
-        String goal = (String)profile.get("Goal");
-        Boolean goalLoseBodyfat = (Boolean) profile.get("GoalLoseBodyfat");
-        Boolean goalGainBodyfat = (Boolean) profile.get("GoalGainBodyfat");
-
-
-        bodyData.add(name);
-        bodyData.add(age);
-        bodyData.add(male);
-        bodyData.add(female);
-        bodyData.add(pal);
-        bodyData.add(height);
-        bodyData.add(bodyfat);
-        bodyData.add(mass);
-        bodyData.add(goal);
-        bodyData.add(goalLoseBodyfat);
-        bodyData.add(goalGainBodyfat);
-
-        return bodyData;
-    }
     private void setInputFields(String name, String age, String pal, String height, String mass, String bodyfatpercentage, Boolean male, Boolean female, String goal, Boolean goalLoseBodyfat, Boolean goalGainBodyfat){
+        //Deze functie krijgt als input alle bodyproperties mee
+        //Dan kun je als de bodyproperties.fxml geopend wordt de opgeslagen properties in de input velden zetten
+
         this.nameInput.setText(name);
         this.ageInput.setText(age);
         this.palInput.setText(pal);
@@ -136,61 +112,17 @@ public class ControllerBodyProperties extends GUI implements Initializable {
             this.Goal.selectToggle(radioButtonGainBodyfat);
         }
     }
-    public static Body createBodyWithBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
-        ArrayList bodyProperties = arrayList;
-        Body body;
-        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
-        if ((boolean)bodyProperties.get(2)){ //if male
-            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "male", Integer.parseInt((String) bodyProperties.get(6)));
-        }
-        else {
-            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "female", Integer.parseInt((String) bodyProperties.get(6)));
-        }
-        return body;
-    }
-    public static Body createBodyWithoutBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
-        ArrayList bodyProperties = arrayList;
-        Body body;
-        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
-        if ((boolean) bodyProperties.get(2)){ //if male
-            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "male");
-        }
-        else {
-            body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "female");
-        }
-        return body;
-    }
-    public static Body createBodyFromArrayList(ArrayList arrayList) throws IOException, ParseException {
-        ArrayList bodyProperties = arrayList;
-        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
-        Body body;
-        if (Double.parseDouble((String) bodyProperties.get(6)) < 1){//(if bodyfat < 1) --> create body without body fat percentage
-            body = createBodyWithoutBodyFatFromArrayList(arrayList);
-        }
-        else {
-            body = createBodyWithBodyFatFromArrayList(arrayList);
-        }
-        return body;
-    }
-    public static Goal createGoalFromArrayList(ArrayList arrayList){
-        ArrayList bodyProperties = arrayList;
-        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
-        Goal goal = new Goal((boolean) bodyProperties.get(9), (boolean) bodyProperties.get(10), Double.parseDouble((String) bodyProperties.get(8)));
-        return goal;
-    }
-    public static Person createPersonFromArrayList(ArrayList arrayList) throws IOException, ParseException {
-        ArrayList bodyProperties = arrayList;
-        //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
-        Person person = new Person((String) bodyProperties.get(0), createBodyFromArrayList(arrayList), createGoalFromArrayList(arrayList), Double.parseDouble((String) bodyProperties.get(4)));
-        return person;
-    }
+
+
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //This is the startup when the bodyproperties.fxml is opened
-        //The set the saved body properties to the input fields by
-        //fetching the saved profile in the profile.json
+        //Deze functie wordt als eerst aangeroepen wanneer de bodyproperties.fxml wordt geopend
+        //Hij leest als eerste de profile.json uit een slaat het op als arraylist
+        //Dan zet hij de input velden naar de opgeslagen properties
+        //Als dit fout gaat komt er een popup
+
         try {
             //bodyData = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
             ArrayList bodyData = readSavedBodyPropertiesFromJSON();

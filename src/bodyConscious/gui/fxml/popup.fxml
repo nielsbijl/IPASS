@@ -14,10 +14,15 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="closePopupButton" layoutX="245.0" layoutY="132.0" mnemonicParsing="false" onMouseClicked="#closePopup" styleClass="gridHeader" stylesheets="@../../../css/stylesheetPages.css" text="Ok" textFill="WHITE">
+      <Button fx:id="closePopupButton" layoutX="245.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#closePopup" styleClass="gridHeader" stylesheets="@../../../css/stylesheetPages.css" text="Ok" textFill="WHITE">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
+      <Label layoutX="74.0" layoutY="98.0" prefHeight="43.0" prefWidth="385.0" text="If you already set your properties you can ignore this!" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -51,8 +51,9 @@ public class ControllerBaseFrame extends GUI implements Initializable {
     public void goToSimulation(MouseEvent mouseEvent) {
         loadPage("../fxml/simulation");
     }
-    public void goToCharts(MouseEvent mouseEvent) {
+    public void goToCharts(MouseEvent mouseEvent) throws IOException {
         loadPage("../fxml/charts");
+        openPopup();
     }
     public void openSettings(MouseEvent mouseEvent) { loadPage("../fxml/settings");}
 

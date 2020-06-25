@@ -14,7 +14,7 @@ public class Body {
     private String gender;
     private int bodyFatPercentage;
 
-    //constructor
+    //constructors
     public Body(double massKG, double heightCM, int ageYEARS, String gender) throws IOException, ParseException {
         this.mass = massKG;
         this.height = heightCM;

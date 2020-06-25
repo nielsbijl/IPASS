@@ -11,8 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,19 +26,19 @@ public class ControllerBaseFrame extends GUI implements Initializable {
     private ImageView settingsButton;
 
     @FXML
-    public Button bodyProperties;
+    private Button bodyProperties;
 
     @FXML
-    public Button exitButtonBaseFrame;
+    private Button exitButtonBaseFrame;
 
     @FXML
-    public Button homePageSmallCloseButton;
+    private Button homePageSmallCloseButton;
 
     @FXML
     private BorderPane baseFrame;
-
     @FXML
-    private AnchorPane homePage;
+    private VBox homePage;
+
 
 
     @Override
@@ -48,7 +48,7 @@ public class ControllerBaseFrame extends GUI implements Initializable {
 
     public void goHome(MouseEvent mouseEvent) {
         //Wanneer je op de home button clickt wordt deze functie uitgevoerd
-        //Hij veranderd de center van de applicatie naar de standaard AnchorPane
+        //Hij veranderd de center van de applicatie naar de standaard Vbox
         baseFrame.setCenter(homePage);
     }
     public void goToBodyProperties(MouseEvent mouseEvent) throws IOException {

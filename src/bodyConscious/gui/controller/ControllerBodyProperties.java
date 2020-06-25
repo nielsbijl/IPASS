@@ -74,15 +74,11 @@ public class ControllerBodyProperties extends GUI implements Initializable {
         profile.put("GoalLoseBodyfat", radioButtonLoseBodyfat.isSelected());
         profile.put("GoalGainBodyfat", radioButtonGainBodyfat.isSelected());
 
-        FileWriter file = null;
-        try {
-            file = new FileWriter("src/bodyConscious/gui/profile.json");
-            file.write(profile.toJSONString());
-            file.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-            openPopup();
-        }
+        FileWriter file;
+        file = new FileWriter("src/bodyConscious/gui/profile.json");
+        file.write(profile.toJSONString());
+        file.close();
+
 
         System.out.println("JSON file created: "+profile);
     }
@@ -113,9 +109,6 @@ public class ControllerBodyProperties extends GUI implements Initializable {
         }
     }
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Deze functie wordt als eerst aangeroepen wanneer de bodyproperties.fxml wordt geopend
@@ -129,19 +122,7 @@ public class ControllerBodyProperties extends GUI implements Initializable {
 
             setInputFields((String) bodyData.get(0), (String) bodyData.get(1), (String) bodyData.get(4), (String) bodyData.get(5), (String) bodyData.get(7), (String) bodyData.get(6),
                     (Boolean) bodyData.get(2), (Boolean) bodyData.get(3), (String) bodyData.get(8), (Boolean) bodyData.get(9), (Boolean) bodyData.get(10));
-        } catch (IOException e) {
-            try {
-                openPopup();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-            e.printStackTrace();
-        } catch (ParseException e) {
-            try {
-                openPopup();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
     }

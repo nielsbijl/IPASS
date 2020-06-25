@@ -77,7 +77,6 @@ public class ControllerSettings extends GUI implements Initializable{
         savedSettings.add(harrisBenedictRevised);
         savedSettings.add(katchMcArdle);
         savedSettings.add(mifflinStJeor);
-        System.out.println(savedSettings);
 
         return savedSettings;
     }

@@ -57,8 +57,6 @@ public class ControllerCharts extends GUI implements Initializable {
 
         ArrayList caloriesToAchieveGoal = createCaloriePlan();
         ArrayList caloriesToChangeNothings = createCalorieBMRPlan();
-        System.out.println(caloriesToChangeNothings);
-        System.out.println(caloriesToAchieveGoal);
         XYChart.Series seriesCaloriesToAchieveGoal = new XYChart.Series();
         XYChart.Series seriesCaloriesToChangeNothing= new XYChart.Series();
         for (int i = 0; i < caloriesToAchieveGoal.size(); i++) {
@@ -78,7 +76,6 @@ public class ControllerCharts extends GUI implements Initializable {
 
         int calorieDeficitOrSurplusDaily = CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person);
         ArrayList fatWeekly = CalorieCalculations.amountOfFatPerWeek(calorieDeficitOrSurplusDaily, 10);
-        System.out.println(fatWeekly);
         XYChart.Series series = new XYChart.Series();
         for (int i = 0; i < fatWeekly.size(); i++) {
             series.getData().add(new XYChart.Data<>("week " + i, fatWeekly.get(i)));
@@ -101,14 +98,7 @@ public class ControllerCharts extends GUI implements Initializable {
             this.weeks = CalorieCalculations.amountOfDaysToAchieveGoal(CalorieCalculations.calorieDeficitOrSurplusDaily(500, this.person), this.person) / 7;
             fillCalorieChart();
             fillFatChart();
-        } catch (IOException e) {
-            try {
-                openPopup();
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
-            e.printStackTrace();
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             try {
                 openPopup();
             } catch (IOException ioException) {

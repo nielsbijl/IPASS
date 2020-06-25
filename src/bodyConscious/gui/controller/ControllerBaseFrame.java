@@ -51,12 +51,12 @@ public class ControllerBaseFrame extends GUI implements Initializable {
         //Hij veranderd de center van de applicatie naar de standaard AnchorPane
         baseFrame.setCenter(homePage);
     }
-    public void goToBodyProperties(MouseEvent mouseEvent) {
+    public void goToBodyProperties(MouseEvent mouseEvent) throws IOException {
         //Wanneer je op de BodyProperties button clickt wordt deze functie uitgevoerd
         //Hij veranderd de center van de applicatie naar de bodyproperties.fxml
         loadPage("../fxml/bodyproperties");
     }
-    public void goToSimulation(MouseEvent mouseEvent) {
+    public void goToSimulation(MouseEvent mouseEvent) throws IOException {
         //Wanneer je op de Simulation button clickt wordt deze functie uitgevoerd
         //Hij veranderd de center van de applicatie naar de simulation.fxml
         loadPage("../fxml/simulation");
@@ -65,9 +65,9 @@ public class ControllerBaseFrame extends GUI implements Initializable {
         //Wanneer je op de Charts button clickt wordt deze functie uitgevoerd
         //Hij veranderd de center van de applicatie naar de charts.fxml
         loadPage("../fxml/charts");
-        openPopup();
+//        openPopup();
     }
-    public void openSettings(MouseEvent mouseEvent) {
+    public void openSettings(MouseEvent mouseEvent) throws IOException {
         //Wanneer je op de Settings button clickt wordt deze functie uitgevoerd
         //Hij veranderd de center van de applicatie naar de settings.fxml
         loadPage("../fxml/settings");
@@ -79,15 +79,16 @@ public class ControllerBaseFrame extends GUI implements Initializable {
         exit();
     }
 
-    private void loadPage(String page){
+    private void loadPage(String page) throws IOException {
         //Deze functie laat de fxml files
         //En zet de fxml file als baseFrame center
+        //Als er null pointer exceptions zijn omdat er data niet is ingevult komt de popup te voor schijn
         Parent root = null;
         try {
             root = FXMLLoader.load(getClass().getResource(page + ".fxml"));
             root.setId(page);
         } catch (IOException e) {
-            e.printStackTrace();
+            openPopup();
         }
         baseFrame.setCenter(root);
     }

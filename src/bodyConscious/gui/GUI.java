@@ -38,7 +38,9 @@ public abstract class GUI {
         ArrayList bodyData = new ArrayList();
 
         JSONParser parser = new JSONParser();
-        JSONObject profile = (JSONObject) parser.parse(new FileReader("src/bodyConscious/gui/profile.json"));
+        JSONObject profile;
+
+        profile = (JSONObject) parser.parse(new FileReader("src/bodyConscious/gui/profile.json"));
         String name = (String)profile.get("Name");
         String age = (String)profile.get("Age");
         Boolean male = (Boolean) profile.get("Male");
@@ -76,7 +78,7 @@ public abstract class GUI {
         //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
 
         ArrayList bodyProperties = arrayList;
-        Body body;
+        Body body = null;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
         if ((boolean)bodyProperties.get(2)){ //if male
             body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "male", Integer.parseInt((String) bodyProperties.get(6)));
@@ -84,6 +86,7 @@ public abstract class GUI {
         else {
             body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "female", Integer.parseInt((String) bodyProperties.get(6)));
         }
+
         return body;
     }
     public Body createBodyWithoutBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
@@ -92,7 +95,7 @@ public abstract class GUI {
         //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
 
         ArrayList bodyProperties = arrayList;
-        Body body;
+        Body body = null;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
         if ((boolean) bodyProperties.get(2)){ //if male
             body = new Body(Double.parseDouble((String) bodyProperties.get(7)), Double.parseDouble((String) bodyProperties.get(5)), Integer.parseInt((String) bodyProperties.get(1)), "male");

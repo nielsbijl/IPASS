@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.paint.Color;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -66,6 +67,10 @@ public class ControllerCharts extends GUI implements Initializable {
         seriesCaloriesToAchieveGoal.setName("Calories you need to eat to achieve your goal");
         seriesCaloriesToChangeNothing.setName("Calories you need to eat to stay the same");
 
+        //set x and y as text color to white
+        this.calorieChart.getYAxis().setTickLabelFill(Color.WHITE);
+        this.calorieChart.getXAxis().setTickLabelFill(Color.WHITE);
+
         this.calorieChart.getData().add(seriesCaloriesToAchieveGoal);
         this.calorieChart.getData().add(seriesCaloriesToChangeNothing);
     }
@@ -81,6 +86,10 @@ public class ControllerCharts extends GUI implements Initializable {
             series.getData().add(new XYChart.Data<>("week " + i, fatWeekly.get(i)));
         }
         series.setName("Amount of kg fat");
+
+        //set x and y as text color to white
+        this.fatChart.getYAxis().setTickLabelFill(Color.WHITE);
+        this.fatChart.getXAxis().setTickLabelFill(Color.WHITE);
 
         this.fatChart.getData().add(series);
     }

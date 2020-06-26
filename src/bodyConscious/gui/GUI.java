@@ -34,7 +34,7 @@ public abstract class GUI {
 
     public ArrayList readSavedBodyPropertiesFromJSON() throws IOException, ParseException {
         //Deze functie leest de profile.json file en returnt het als arraylist
-        //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
 
         ArrayList bodyData = new ArrayList();
 
@@ -76,8 +76,8 @@ public abstract class GUI {
     public ArrayList<Boolean> readSavedSettingsFromJSON() throws IOException, ParseException {
         //Deze functie leest de settings.json uit
         //Hij kijkt welke settings allemaal true en false zijn en returnt dit als arraylist
-        //Deze functie staat in GUI abstract class omdat op deze manier verschillende controllers hier gebruik van kunnen maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat op deze manier verschillende controllers hier gebruik van kunnen maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
 
         ArrayList<Boolean> savedSettings = new ArrayList();
 
@@ -98,8 +98,8 @@ public abstract class GUI {
     public BMR getBMREquation() throws IOException, ParseException {
         //Deze functie krijgt alle settings mee vanuit een arraylist
         //Hij kijkt welke Basal Metabolic Rate equation opgeslagen is en returnt dit
-        //Deze functie staat in GUI abstract class omdat op deze manier verschillende controllers hier gebruik van kunnen maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat op deze manier verschillende controllers hier gebruik van kunnen maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
 
         ArrayList<Boolean> savedSettings = null;
         savedSettings = readSavedSettingsFromJSON();
@@ -125,8 +125,8 @@ public abstract class GUI {
     public Body createBodyWithBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         //Deze functie maakt van de arraylist die de functie readSavedBodyPropertiesFromJSON() maakt
         //een Body object met de lichaamsvet percentage er bij
-        //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
 
         ArrayList bodyProperties = arrayList;
         Body body = null;
@@ -143,8 +143,8 @@ public abstract class GUI {
     public Body createBodyWithoutBodyFatFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         //Deze functie maakt van de arraylist die de functie readSavedBodyPropertiesFromJSON() maakt
         //een Body object zonder de lichaamsvet percentage er bij
-        //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
 
         ArrayList bodyProperties = arrayList;
         Body body = null;
@@ -161,8 +161,8 @@ public abstract class GUI {
     public Body createBodyFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         //Deze functie maakt van de arraylist die de functie readSavedBodyPropertiesFromJSON() maakt
         //een Body object en kijkt zelf of die gemaakt wordt met of zonder vetpercentage
-        //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
 
         ArrayList bodyProperties = arrayList;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
@@ -178,8 +178,8 @@ public abstract class GUI {
     public Goal createGoalFromArrayList(ArrayList arrayList){
         //Deze functie maakt van de arraylist die de functie readSavedBodyPropertiesFromJSON() maakt
         //een Gaol object
-        //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
 
         ArrayList bodyProperties = arrayList;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
@@ -189,8 +189,8 @@ public abstract class GUI {
     public Person createPersonFromArrayList(ArrayList arrayList) throws IOException, ParseException {
         //Deze functie maakt van de arraylist die de functie readSavedBodyPropertiesFromJSON() maakt
         //een Person object
-        //Deze functie staat in GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
-        //Dit maakt de code herbruikbaar voor de hele GUI
+        //Deze functie staat in bodyConscious.gui.GUI abstract class omdat verschillende controllers hier gebruik van moeten maken
+        //Dit maakt de code herbruikbaar voor de hele bodyConscious.gui.GUI
         ArrayList bodyProperties = arrayList;
         //bodyProperties = (String: name, String: age, Boolean: male, Boolean: female, String: pal, String: height, String: bodyfat, String: mass, String: goal, Boolean: goalLoseBodyfat, Boolean: goalGainBodyfat)
         Person person = new Person((String) bodyProperties.get(0), createBodyFromArrayList(arrayList), createGoalFromArrayList(arrayList), Double.parseDouble((String) bodyProperties.get(4)));

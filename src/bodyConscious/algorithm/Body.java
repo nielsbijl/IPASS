@@ -1,7 +1,6 @@
 package bodyConscious.algorithm;
 
 import bodyConscious.algorithm.BMR.BMR;
-import bodyConscious.gui.controller.ControllerSettings;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
@@ -20,7 +19,6 @@ public class Body {
         this.height = heightCM;
         this.age = ageYEARS;
         this.gender = gender;
-        this.caloriesBurnedAtCompleteRest = ControllerSettings.getBMREquation(); //HarrisBenedictRevised default
     }
     public Body(double massKG, double heightCM, int ageYEARS, String gender, int bodyFatPercentage) throws IOException, ParseException {
         this.mass = massKG;
@@ -28,7 +26,6 @@ public class Body {
         this.age = ageYEARS;
         this.gender = gender;
         this.bodyFatPercentage = bodyFatPercentage;
-        this.caloriesBurnedAtCompleteRest = ControllerSettings.getBMREquation(); //HarrisBenedictRevised default
     }
 
     //setters

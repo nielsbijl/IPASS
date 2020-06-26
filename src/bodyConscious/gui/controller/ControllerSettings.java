@@ -4,7 +4,6 @@ package bodyConscious.gui.controller;
 //Als settings.fxml geladen wordt, dan wordt deze class met zijn functies aan geroepen
 //Deze class regelt alles wat er in de fxml file gebeurt
 
-import bodyConscious.algorithm.BMR.*;
 import bodyConscious.gui.GUI;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,14 +11,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControllerSettings extends GUI implements Initializable{
@@ -56,51 +52,6 @@ public class ControllerSettings extends GUI implements Initializable{
         file.close();
 
         System.out.println("JSON file created: "+profile);
-    }
-
-    public static ArrayList<Boolean> readSavedSettingsFromJSON() throws IOException, ParseException {
-        //Deze functie leest de settings.json uit
-        //Hij kijkt welke settings allemaal true en false zijn en returnt dit als arraylist
-        //Deze functie is static omdat andere classes hier gebruik van moeten maken
-        //Deze functie staat niet in de GUI abstract class omdat niet alleen classes van de gui hier gebruik van moeten maken
-        //Maar ook classes uit het algoritme gedeelte
-        ArrayList<Boolean> savedSettings = new ArrayList();
-
-        JSONParser parser = new JSONParser();
-        JSONObject profile = (JSONObject) parser.parse(new FileReader("src/bodyConscious/gui/settings.json"));
-        Boolean harrisBenedict = (Boolean) profile.get("HarrisBenedict");
-        Boolean harrisBenedictRevised = (Boolean) profile.get("HarrisBenedictRevised");
-        Boolean katchMcArdle = (Boolean) profile.get("KatchMcArdle");
-        Boolean mifflinStJeor = (Boolean) profile.get("MifflinStJeor");
-
-        savedSettings.add(harrisBenedict);
-        savedSettings.add(harrisBenedictRevised);
-        savedSettings.add(katchMcArdle);
-        savedSettings.add(mifflinStJeor);
-
-        return savedSettings;
-    }
-    public static BMR getBMREquation() throws IOException, ParseException {
-        //Deze functie krijgt alle settings mee vanuit een arraylist
-        //Hij kijkt welke Basal Metabolic Rate equation opgeslagen is en returnt dit
-        //Deze functie is static omdat andere classes hier gebruik van moeten maken
-        //Deze functie staat niet in de GUI abstract class omdat niet alleen classes van de gui hier gebruik van moeten maken
-        //Maar ook classes uit het algoritme gedeelte
-        ArrayList<Boolean> savedSettings = null;
-        savedSettings = readSavedSettingsFromJSON();
-        if (savedSettings.get(0)){
-            return new HarrisBenedict();
-        }
-        else if (savedSettings.get(1)){
-            return new HarrisBenedictRevised();
-        }
-        else if (savedSettings.get(2)){
-            return new KatchMcArdle();
-        }
-        else if (savedSettings.get(3)){
-            return new MifflinStJeor();
-        }
-        return new HarrisBenedictRevised(); //default // Als alle settings false zijn wordt HarrisBenedictRevised gereturnd
     }
 
     private void setSettings(Boolean harrisBenedict, Boolean harrisBenedictRevised, Boolean katchMcArdle, Boolean mifflinStJeor){

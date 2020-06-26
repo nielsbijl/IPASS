@@ -27,3 +27,14 @@
 
 
 ![Screenshot](editMain.png)
+
+
+Libraries:
+
+Java jdk-11.0.7
+
+javafx-sdk-11.0.2
+
+json-simple-1.1.1
+
+JUnit4

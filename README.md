@@ -16,3 +16,11 @@
    
    
    JAVA SDK 11.0.7
+   
+   -----Before run-----
+   
+   Edit 'main'
+   
+   Set the main VM options to your JavaFX library path
+   
+   set VM options: --module-path "C:\Program Files\Java\javafx-sdk-11.0.2\lib" --add-modules=javafx.controls,javafx.fxml
